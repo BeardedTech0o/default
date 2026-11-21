@@ -205,6 +205,8 @@ jobs:
     if: needs.preflight.outputs.removal != 'true'
     steps:
       - name: HACS action
+        # HACS documents hacs/action@main as the supported reference; it cannot be pinned to a tag.
+        # nosemgrep: yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag
         uses: hacs/action@main
         with:
           repository: ${{needs.preflight.outputs.repository}}
