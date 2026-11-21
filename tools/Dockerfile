@@ -1,5 +1,8 @@
-FROM alpine
-RUN apk add --no-cache git jq bash
+FROM alpine:3.22
+RUN apk add --no-cache git jq bash \
+    && adduser -D -h /home/browse browse
+USER browse
+WORKDIR /home/browse
 
 # docker build . -f tools/Dockerfile --tag repositories
 # docker run -d --rm --name repositories repositories sleep 3600
